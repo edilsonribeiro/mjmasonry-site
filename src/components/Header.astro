@@ -19,7 +19,7 @@ const navLinks = [
         <img src={link('/img/logo-mj.jpg')} alt="M & J Masonry" class="h-12 w-12 rounded-full object-cover" />
         <div>
           <span class="text-xl font-heading font-bold text-white">M &amp; J Masonry</span>
-          <span class="block text-xs text-gold tracking-wide">{tagline}</span>
+          <span class="hidden lg:block text-xs text-gold tracking-wide">{tagline}</span>
         </div>
       </a>
 
@@ -35,7 +35,7 @@ const navLinks = [
         ))}
         <a
           href={link('/contact')}
-          class="bg-gold hover:bg-gold-bright text-navy-dark font-bold px-6 py-3 rounded-lg transition-colors duration-200 shadow-md"
+          class="hidden lg:inline-block whitespace-nowrap bg-gold hover:bg-gold-bright text-navy-dark font-bold px-6 py-3 rounded-lg transition-colors duration-200 shadow-md"
         >
           Get Your Free Estimate
         </a>

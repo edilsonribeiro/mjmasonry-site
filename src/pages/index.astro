@@ -1,50 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
 import { callLink, phoneDisplay } from '../data/contact';
 import { link } from '../lib/url';
-
-const services = [
-  {
-    title: 'Stone & Retaining Walls',
-    desc: 'Custom-built stone and retaining walls designed to hold, protect, and beautify your property for decades.',
-    icon: '🧱',
-  },
-  {
-    title: 'Walkways',
-    desc: 'Elegant paver and natural stone walkways that welcome guests and connect your outdoor spaces.',
-    icon: '🚶',
-  },
-  {
-    title: 'Steps & Stoops',
-    desc: 'Durable, safe, and attractive steps and stoops crafted from premium stone and concrete materials.',
-    icon: '🪜',
-  },
-  {
-    title: 'Masonry Services',
-    desc: 'Expert brick, block, and stone masonry — from repairs to full new construction projects.',
-    icon: '🏗️',
-  },
-  {
-    title: 'Paver Installation',
-    desc: 'Professional paver installation for driveways, walkways, and patios using top-grade materials.',
-    icon: '🔲',
-  },
-  {
-    title: 'Patios',
-    desc: 'Beautiful outdoor patios built for relaxation and entertaining, designed to complement your home.',
-    icon: '☀️',
-  },
-  {
-    title: 'Outdoor Fireplaces & Fire Pits',
-    desc: 'Gather around a custom-built fireplace or fire pit — the perfect centerpiece for your backyard.',
-    icon: '🔥',
-  },
-  {
-    title: 'Property Cleanup',
-    desc: 'Complete property cleanup and preparation services to keep your landscape looking its best.',
-    icon: '🌿',
-  },
-];
+import { services } from '../data/services';
 
 const galleryImages = [
   { src: '/img/gallery/paver-walkway-fork.jpg', alt: 'Paver walkway with fork design' },
@@ -136,11 +95,13 @@ const galleryImages = [
             href={link('/services')}
             class="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl border border-gray-100 hover:border-gold transition-all duration-300 hover:-translate-y-1"
           >
-            <div class="text-4xl mb-4">{svc.icon}</div>
+            <div class="text-gold mb-4">
+              <ServiceIcon name={svc.icon} class="w-12 h-12" />
+            </div>
             <h3 class="font-heading font-bold text-lg text-navy mb-2 group-hover:text-gold transition-colors">
               {svc.title}
             </h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{svc.desc}</p>
+            <p class="text-gray-600 text-sm leading-relaxed">{svc.short}</p>
           </a>
         ))}
       </div>

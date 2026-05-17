@@ -1,0 +1,81 @@
+---
+import type { ServiceIconName } from '../data/services';
+
+interface Props {
+  name: ServiceIconName;
+  class?: string;
+}
+
+const { name, class: className = 'w-12 h-12' } = Astro.props;
+---
+
+{name === 'wall' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <rect x="3" y="4" width="6" height="4" rx="0.5" />
+    <rect x="9" y="4" width="6" height="4" rx="0.5" />
+    <rect x="15" y="4" width="6" height="4" rx="0.5" />
+    <rect x="3" y="10" width="3" height="4" rx="0.5" />
+    <rect x="6" y="10" width="6" height="4" rx="0.5" />
+    <rect x="12" y="10" width="6" height="4" rx="0.5" />
+    <rect x="18" y="10" width="3" height="4" rx="0.5" />
+    <rect x="3" y="16" width="6" height="4" rx="0.5" />
+    <rect x="9" y="16" width="6" height="4" rx="0.5" />
+    <rect x="15" y="16" width="6" height="4" rx="0.5" />
+  </svg>
+)}
+
+{name === 'walkway' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 22 L5 4 M15 22 L19 4" />
+    <line x1="6.5" y1="18" x2="17.5" y2="18" />
+    <line x1="7.5" y1="13" x2="16.5" y2="13" />
+    <line x1="8.5" y1="8" x2="15.5" y2="8" />
+  </svg>
+)}
+
+{name === 'steps' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M2 21 H8 V16 H13 V11 H18 V6 H22" />
+    <path d="M2 21 V18 M8 16 V13 M13 11 V8 M18 6 V3" opacity="0.3" />
+  </svg>
+)}
+
+{name === 'masonry' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 18 L11 10 L13 12 L21 4" />
+    <path d="M3 18 L7 22 L11 18 L7 14 Z" />
+    <line x1="13" y1="12" x2="17" y2="16" />
+  </svg>
+)}
+
+{name === 'paver' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <rect x="3" y="4" width="8" height="6" rx="0.5" />
+    <rect x="13" y="4" width="8" height="6" rx="0.5" />
+    <rect x="3" y="14" width="8" height="6" rx="0.5" />
+    <rect x="13" y="14" width="8" height="6" rx="0.5" />
+  </svg>
+)}
+
+{name === 'patio' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 11 C3 7 7 3 12 3 C17 3 21 7 21 11 Z" />
+    <line x1="12" y1="11" x2="12" y2="20" />
+    <path d="M12 20 C12 21.1 12.9 22 14 22" />
+    <line x1="9" y1="11" x2="15" y2="11" />
+  </svg>
+)}
+
+{name === 'fire' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 2 C12.5 5 9 6 9 10 C9 12 10 14 12 14 C14 14 15 12 15 10 C15 8.5 14 7.5 13.5 6 C13 7 12.5 8 12 8 C12 5 12 4 12 2 Z" />
+    <path d="M7 14 C7 18 9 22 12 22 C15 22 17 18 17 14 C17 16 15.5 17 14 17 C13 17 12.5 16 12 15 C11.5 16 11 17 10 17 C8.5 17 7 16 7 14 Z" />
+  </svg>
+)}
+
+{name === 'cleanup' && (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 3 C12 3 3 12 3 21 C12 21 21 12 21 3 Z" />
+    <line x1="3" y1="21" x2="12" y2="12" />
+  </svg>
+)}
