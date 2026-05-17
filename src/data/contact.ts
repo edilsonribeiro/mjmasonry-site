@@ -3,7 +3,7 @@
 export const phoneDisplay = '(857) 251-7967';
 export const phoneE164 = '+18572517967';
 
-export const email = 'Mj_candidos@outlook.com';
+export const email = 'mj_candidos@hotmail.com';
 
 export const locationCity = 'Rockland, MA';
 export const serviceArea = 'Serving the entire South Shore';
