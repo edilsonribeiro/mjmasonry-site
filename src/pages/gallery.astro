@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { callLink, phoneDisplay } from '../data/contact';
+import { link } from '../lib/url';
+
+const images = [
+  { src: '/img/gallery/paver-walkway-fork.jpg', alt: 'Paver walkway with fork design', tag: 'Walkways' },
+  { src: '/img/gallery/cobblestone-walkway.jpg', alt: 'Cobblestone walkway', tag: 'Walkways' },
+  { src: '/img/gallery/paver-walkway-night.jpg', alt: 'Paver walkway illuminated at night', tag: 'Walkways' },
+  { src: '/img/gallery/ig-post1-steps.png', alt: 'Custom stone steps project', tag: 'Steps & Stoops' },
+  { src: '/img/gallery/ig-post2-walkway.png', alt: 'Paver walkway Instagram feature', tag: 'Walkways' },
+  { src: '/img/services/company-sign.jpg', alt: 'M & J Masonry company sign on site', tag: 'About Us' },
+];
+---
+
+<Layout title="Gallery">
+  <!-- Page Header -->
+  <section class="bg-navy-dark py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-gold font-medium uppercase tracking-widest text-sm mb-2">Our Work</p>
+      <h1 class="font-heading font-extrabold text-4xl md:text-5xl text-white mb-4">
+        Project Gallery
+      </h1>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        See the quality and craftsmanship behind every M &amp; J Masonry project. From walkways
+        to walls, each photo tells the story of hard work and attention to detail.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {images.map((img) => (
+          <div class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300">
+            <img
+              src={link(img.src)}
+              alt={img.alt}
+              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="absolute bottom-0 left-0 right-0 p-6">
+                <span class="inline-block bg-gold text-navy-dark text-xs font-bold px-3 py-1 rounded-full mb-2">
+                  {img.tag}
+                </span>
+                <p class="text-white font-medium">{img.alt}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-16">
+        <p class="text-gray-600 text-lg mb-6">
+          Want to see more? Follow us on social media for the latest project updates.
+        </p>
+        <p class="text-navy font-medium">
+          More projects are added regularly as we complete work across the South Shore.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-navy-dark py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
+        Like What You See?
+      </h2>
+      <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+        Let us bring this level of craftsmanship to your property. Reach out for a free estimate today.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={callLink}
+          class="bg-gold hover:bg-gold-bright text-navy-dark font-bold text-lg px-8 py-4 rounded-lg transition-colors shadow-lg"
+        >
+          Call {phoneDisplay}
+        </a>
+        <a
+          href={link('/contact')}
+          class="border-2 border-gold text-gold hover:bg-gold hover:text-navy-dark font-bold text-lg px-8 py-4 rounded-lg transition-colors"
+        >
+          Request a Free Estimate
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

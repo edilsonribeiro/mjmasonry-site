@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { link } from '../lib/url';
+
+const services = [
+  {
+    title: 'Stone & Retaining Walls',
+    desc: 'Our stone and retaining walls are engineered for strength and designed for beauty. Whether you need to manage a slope, define property boundaries, or create a stunning landscape feature, we build walls that last. We work with natural stone, manufactured block, and custom combinations to match your home and landscape perfectly.',
+    icon: '🧱',
+  },
+  {
+    title: 'Walkways',
+    desc: 'A well-designed walkway transforms the entire look and feel of your property. We install paver, flagstone, and cobblestone walkways that guide visitors to your door with style. From straight paths to winding garden trails, every walkway we build combines function with curb appeal.',
+    icon: '🚶',
+  },
+  {
+    title: 'Steps & Stoops',
+    desc: 'Safe, sturdy, and attractive — our steps and stoops are built to handle heavy foot traffic and harsh New England winters. We construct granite, bluestone, and paver steps for front entries, backyards, and multi-level landscapes. Every step is leveled, set on a proper base, and finished to perfection.',
+    icon: '🪜',
+  },
+  {
+    title: 'Masonry Services',
+    desc: 'From brick repair to full chimney rebuilds, our masonry expertise covers it all. We work with brick, block, and natural stone for both residential and commercial projects. Whether it is tuckpointing, veneer installation, or a complete foundation repair, we bring precision and durability to every job.',
+    icon: '🏗️',
+  },
+  {
+    title: 'Paver Installation',
+    desc: 'Professional paver installation for driveways, walkways, pool decks, and more. We prep the base properly, lay each paver with care, and finish with joint sand and sealant for a lasting result. We work with leading brands like Techo-Bloc, Belgard, and Unilock to ensure premium quality.',
+    icon: '🔲',
+  },
+  {
+    title: 'Patios',
+    desc: 'Your patio should be the heart of your outdoor living space. We design and build custom patios using pavers, natural stone, and stamped concrete — complete with seating walls, fire features, and integrated lighting. From intimate spaces to large entertaining areas, we make your vision a reality.',
+    icon: '☀️',
+  },
+  {
+    title: 'Outdoor Fireplaces & Fire Pits',
+    desc: 'Extend your outdoor season with a custom-built fireplace or fire pit. We construct wood-burning and gas fire features using natural stone, brick, and manufactured materials. Each project is designed to be a focal point — a place where family and friends gather year-round.',
+    icon: '🔥',
+  },
+  {
+    title: 'Property Cleanup',
+    desc: 'Before a new project or after a long season, we offer complete property cleanup services. This includes debris removal, grading, brush clearing, and site preparation. We make sure your property is clean, level, and ready for whatever comes next.',
+    icon: '🌿',
+  },
+];
+---
+
+<Layout title="Services">
+  <!-- Page Header -->
+  <section class="bg-navy-dark py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-gold font-medium uppercase tracking-widest text-sm mb-2">What We Do</p>
+      <h1 class="font-heading font-extrabold text-4xl md:text-5xl text-white mb-4">
+        Our Services
+      </h1>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        From stone walls to complete outdoor transformations, M &amp; J Masonry delivers
+        craftsmanship you can trust — built to withstand New England weather and the test of time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-12">
+        {services.map((svc, i) => (
+          <div class={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="flex-1">
+              <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-5xl mb-4">{svc.icon}</div>
+                <h2 class="font-heading font-bold text-2xl text-navy mb-4">{svc.title}</h2>
+                <p class="text-gray-700 leading-relaxed">{svc.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-gold py-14">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-heading font-bold text-3xl md:text-4xl text-navy-dark mb-4">
+        Need a Custom Solution?
+      </h2>
+      <p class="text-navy/80 text-lg mb-8 max-w-2xl mx-auto">
+        Every property is different. Contact us for a free on-site consultation and estimate
+        tailored to your project.
+      </p>
+      <a
+        href={link('/contact')}
+        class="inline-block bg-navy-dark hover:bg-navy text-white font-bold text-lg px-10 py-4 rounded-lg transition-colors shadow-lg"
+      >
+        Get Your Free Estimate
+      </a>
+    </div>
+  </section>
+</Layout>

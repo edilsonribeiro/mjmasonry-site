@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1B2A4A;
+  --color-navy-dark: #111D35;
+  --color-navy-light: #2A3F6A;
+  --color-gold: #C9A84C;
+  --color-gold-bright: #D4A843;
+  --color-cream: #F8F6F0;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Poppins', system-ui, sans-serif;
+
+  --text-base: 18px;
+  --leading-base: 1.6;
+}

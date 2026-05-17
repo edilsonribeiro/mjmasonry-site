@@ -1,0 +1,238 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  phoneDisplay,
+  email,
+  locationCity,
+  serviceArea,
+  callLink,
+  smsLink,
+  whatsappLink,
+  mailtoLink,
+} from '../data/contact';
+
+const serviceOptions = [
+  'Stone & Retaining Walls',
+  'Walkways',
+  'Steps & Stoops',
+  'Masonry Services',
+  'Paver Installation',
+  'Patios',
+  'Outdoor Fireplaces & Fire Pits',
+  'Property Cleanup',
+  'Other',
+];
+
+const formspreeFormId = import.meta.env.PUBLIC_FORMSPREE_FORM_ID ?? '';
+const formAction = formspreeFormId
+  ? `https://formspree.io/f/${formspreeFormId}`
+  : '#';
+const formspreeConfigured = Boolean(formspreeFormId);
+---
+
+<Layout title="Contact">
+  <!-- Page Header -->
+  <section class="bg-navy-dark py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-gold font-medium uppercase tracking-widest text-sm mb-2">Get In Touch</p>
+      <h1 class="font-heading font-extrabold text-4xl md:text-5xl text-white mb-4">
+        Contact Us
+      </h1>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        Ready to start your project? Fill out the form below or give us a call.
+        We'll get back to you within 24 hours with a free estimate.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Form -->
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 border border-gray-100">
+          <h2 class="font-heading font-bold text-2xl text-navy mb-6">
+            Get Your Free Estimate
+          </h2>
+          {!formspreeConfigured && (
+            <div class="mb-6 p-4 rounded-lg border border-amber-400 bg-amber-50 text-amber-900 text-sm">
+              <strong>Form not configured.</strong> Set <code>PUBLIC_FORMSPREE_FORM_ID</code> at build time to enable submissions.
+            </div>
+          )}
+          <form action={formAction} method="POST" class="space-y-6">
+            <!-- Formspree metadata -->
+            <input type="hidden" name="_subject" value="New Free Estimate request — M & J Masonry" />
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-navy mb-2">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="John Smith"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-2 focus:ring-gold/20 transition-colors text-navy bg-cream"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-navy mb-2">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-2 focus:ring-gold/20 transition-colors text-navy bg-cream"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-navy mb-2">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder="(555) 123-4567"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-2 focus:ring-gold/20 transition-colors text-navy bg-cream"
+              />
+            </div>
+
+            <!-- Service -->
+            <div>
+              <label for="service" class="block text-sm font-medium text-navy mb-2">
+                Service Needed
+              </label>
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-2 focus:ring-gold/20 transition-colors text-navy bg-cream"
+              >
+                <option value="">Select a service...</option>
+                {serviceOptions.map((svc) => (
+                  <option value={svc}>{svc}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-navy mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us about your project — dimensions, materials you're interested in, timeline, etc."
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gold focus:ring-2 focus:ring-gold/20 transition-colors text-navy bg-cream resize-y"
+              ></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              class="w-full bg-gold hover:bg-gold-bright text-navy-dark font-bold text-lg px-8 py-4 rounded-lg transition-colors shadow-md"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info & Map -->
+        <div class="space-y-8">
+          <!-- Contact Details -->
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
+            <h2 class="font-heading font-bold text-2xl text-navy mb-6">Contact Information</h2>
+            <ul class="space-y-5">
+              <li class="flex items-start gap-4">
+                <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-navy">Call</p>
+                  <a href={callLink} class="text-gray-600 hover:text-gold transition-colors">{phoneDisplay}</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-navy">Text (SMS)</p>
+                  <a href={smsLink} class="text-gray-600 hover:text-gold transition-colors">{phoneDisplay}</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.555-5.338 11.891-11.893 11.891a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-navy">WhatsApp</p>
+                  <a href={whatsappLink} target="_blank" rel="noopener" class="text-gray-600 hover:text-gold transition-colors">{phoneDisplay}</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-navy">Email</p>
+                  <a href={mailtoLink} class="text-gray-600 hover:text-gold transition-colors break-all">{email}</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="bg-navy w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-medium text-navy">Location</p>
+                  <p class="text-gray-600">{locationCity}</p>
+                  <p class="text-gray-500 text-sm">{serviceArea}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Availability -->
+          <div class="bg-navy rounded-xl shadow-lg p-8">
+            <h3 class="font-heading font-bold text-xl text-white mb-4">Quick Response Guarantee</h3>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              We know your time is valuable. When you reach out to M &amp; J Masonry, expect a
+              response within 24 hours — usually much sooner. We'll schedule a free on-site visit
+              at your convenience.
+            </p>
+            <div class="border-t border-navy-light pt-4 mt-4">
+              <p class="text-gold font-medium">Prefer to call?</p>
+              <a href={callLink} class="text-white text-2xl font-heading font-bold hover:text-gold transition-colors">
+                {phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
