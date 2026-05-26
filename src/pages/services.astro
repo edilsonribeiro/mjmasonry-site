@@ -20,13 +20,25 @@ import { services } from '../data/services';
     </div>
   </section>
 
-  <!-- Services Grid -->
+  <!-- Services List -->
   <section class="py-20 bg-cream">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-12">
+      <div class="space-y-16">
         {services.map((svc, i) => (
           <div class={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-            <div class="flex-1">
+            {svc.image && (
+              <div class="flex-1 w-full">
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={link(svc.image)}
+                    alt={svc.imageAlt ?? svc.title}
+                    class="w-full h-80 md:h-96 object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            )}
+            <div class="flex-1 w-full">
               <div class="bg-white rounded-xl p-8 shadow-md border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                 <div class="text-gold mb-4">
                   <ServiceIcon name={svc.icon} class="w-14 h-14" />

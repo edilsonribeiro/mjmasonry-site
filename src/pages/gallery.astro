@@ -2,15 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { callLink, phoneDisplay } from '../data/contact';
 import { link } from '../lib/url';
-
-const images = [
-  { src: '/img/gallery/paver-walkway-fork.jpg', alt: 'Paver walkway with fork design', tag: 'Walkways' },
-  { src: '/img/gallery/cobblestone-walkway.jpg', alt: 'Cobblestone walkway', tag: 'Walkways' },
-  { src: '/img/gallery/paver-walkway-night.jpg', alt: 'Paver walkway illuminated at night', tag: 'Walkways' },
-  { src: '/img/gallery/ig-post1-steps.png', alt: 'Custom stone steps project', tag: 'Steps & Stoops' },
-  { src: '/img/gallery/ig-post2-walkway.png', alt: 'Paver walkway Instagram feature', tag: 'Walkways' },
-  { src: '/img/services/company-sign.jpg', alt: 'M & J Masonry company sign on site', tag: 'About Us' },
-];
+import { galleryCategories } from '../data/gallery';
 ---
 
 <Layout title="Gallery">
@@ -28,36 +20,58 @@ const images = [
     </div>
   </section>
 
-  <!-- Gallery Grid -->
-  <section class="py-20 bg-cream">
+  <!-- Category Nav -->
+  <section class="bg-navy py-6 sticky top-16 z-30 border-b border-navy-light">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {images.map((img) => (
-          <div class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300">
-            <img
-              src={link(img.src)}
-              alt={img.alt}
-              class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div class="absolute bottom-0 left-0 right-0 p-6">
-                <span class="inline-block bg-gold text-navy-dark text-xs font-bold px-3 py-1 rounded-full mb-2">
-                  {img.tag}
-                </span>
-                <p class="text-white font-medium">{img.alt}</p>
-              </div>
-            </div>
-          </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {galleryCategories.map((cat) => (
+          <a
+            href={`#${cat.id}`}
+            class="bg-navy-dark hover:bg-gold hover:text-navy-dark text-gray-200 text-sm font-medium px-4 py-2 rounded-full transition-colors border border-navy-light hover:border-gold"
+          >
+            {cat.title}
+          </a>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div class="text-center mt-16">
-        <p class="text-gray-600 text-lg mb-6">
-          Want to see more? Follow us on social media for the latest project updates.
-        </p>
-        <p class="text-navy font-medium">
-          More projects are added regularly as we complete work across the South Shore.
+  <!-- Gallery by Category -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      {galleryCategories.map((cat) => (
+        <div id={cat.id} class="scroll-mt-32">
+          <div class="text-center mb-10">
+            <h2 class="font-heading font-bold text-3xl md:text-4xl text-navy mb-3">{cat.title}</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">{cat.description}</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cat.images.map((img) => (
+              <div class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 bg-white">
+                <img
+                  src={link(img.src)}
+                  alt={img.alt}
+                  class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-0 left-0 right-0 p-6">
+                    <span class="inline-block bg-gold text-navy-dark text-xs font-bold px-3 py-1 rounded-full mb-2">
+                      {cat.title}
+                    </span>
+                    <p class="text-white font-medium leading-snug">{img.alt}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="text-center pt-8">
+        <p class="text-gray-600 text-lg mb-4">
+          Want to see more? New projects are added regularly as we complete work across the South Shore.
         </p>
       </div>
     </div>
