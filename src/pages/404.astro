@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { callLink, phoneDisplay } from '../data/contact';
+import { link } from '../lib/url';
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you are looking for does not exist. Explore M & J Masonry services, project gallery, or request a free estimate."
+>
+  <section class="bg-navy-dark min-h-[70vh] flex items-center py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-gold font-heading font-extrabold text-7xl md:text-8xl mb-6">404</p>
+      <h1 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
+        This Page Wandered Off the Walkway
+      </h1>
+      <p class="text-gray-300 text-lg mb-10 max-w-xl mx-auto">
+        The page you're looking for doesn't exist or has been moved. But the craftsmanship
+        you came for is still here.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={link('/')}
+          class="bg-gold hover:bg-gold-bright text-navy-dark font-bold text-lg px-8 py-4 rounded-lg transition-colors shadow-lg"
+        >
+          Back to Home
+        </a>
+        <a
+          href={link('/services')}
+          class="border-2 border-gold text-gold hover:bg-gold hover:text-navy-dark font-bold text-lg px-8 py-4 rounded-lg transition-colors"
+        >
+          View Our Services
+        </a>
+      </div>
+      <p class="text-gray-400 mt-10">
+        Or call us directly: <a href={callLink} class="text-gold hover:underline font-medium">{phoneDisplay}</a>
+      </p>
+    </div>
+  </section>
+</Layout>

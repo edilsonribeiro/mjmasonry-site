@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Pic from '../components/Pic.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
 import { callLink, phoneDisplay } from '../data/contact';
 import { link } from '../lib/url';
 import { services } from '../data/services';
+
+const heroImage = '/img/gallery/walkway-paver-curved.webp';
 
 const galleryImages = [
   { src: '/img/gallery/patio-stone-wall-green-house.jpg', alt: 'Paver patio with natural stone retaining wall' },
@@ -13,15 +16,21 @@ const galleryImages = [
 ];
 ---
 
-<Layout title="Home">
+<Layout
+  title="Masonry & Hardscape Contractor in Rockland, MA"
+  description="M & J Masonry is a family-owned masonry and hardscape company in Rockland, MA serving the South Shore. Stone walls, walkways, patios, steps, and paver installation. Free estimates."
+  preloadImage={heroImage}
+>
   <!-- ============ HERO ============ -->
   <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
     <!-- Background image -->
     <div class="absolute inset-0">
-      <img
-        src={link('/img/gallery/walkway-paver-curved.jpg')}
+      <Pic
+        src="/img/gallery/walkway-paver-curved.jpg"
         alt="Curved paver walkway by M & J Masonry"
         class="w-full h-full object-cover"
+        loading="eager"
+        fetchpriority="high"
       />
       <div class="absolute inset-0 bg-navy-dark/70"></div>
     </div>
@@ -138,11 +147,10 @@ const galleryImages = [
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {galleryImages.map((img) => (
           <div class="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img
-              src={link(img.src)}
+            <Pic
+              src={img.src}
               alt={img.alt}
               class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
-              loading="lazy"
             />
           </div>
         ))}

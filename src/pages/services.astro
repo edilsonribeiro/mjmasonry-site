@@ -1,11 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Pic from '../components/Pic.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
 import { link } from '../lib/url';
 import { services } from '../data/services';
 ---
 
-<Layout title="Services">
+<Layout
+  title="Masonry & Hardscape Services"
+  description="Stone and retaining walls, walkways, steps, patios, paver installation, outdoor fireplaces, and masonry repairs — serving Rockland, MA and the South Shore. Free on-site estimates."
+>
   <!-- Page Header -->
   <section class="bg-navy-dark py-20">
     <div class="max-w-4xl mx-auto px-4 text-center">
@@ -29,11 +33,10 @@ import { services } from '../data/services';
             {svc.image && (
               <div class="flex-1 w-full">
                 <div class="rounded-xl overflow-hidden shadow-lg">
-                  <img
-                    src={link(svc.image)}
+                  <Pic
+                    src={svc.image}
                     alt={svc.imageAlt ?? svc.title}
                     class="w-full h-80 md:h-96 object-cover"
-                    loading="lazy"
                   />
                 </div>
               </div>

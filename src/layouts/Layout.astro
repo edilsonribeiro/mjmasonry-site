@@ -2,14 +2,59 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { link } from '../lib/url';
+import { phoneE164, email } from '../data/contact';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  /** Path to the social-share image (relative to site root). */
+  ogImage?: string;
+  /** Path to an image worth preloading (e.g. the hero) — should be the .webp. */
+  preloadImage?: string;
 }
 
-const { title, description = 'M & J Masonry — Family-owned masonry and hardscape company in Rockland, MA. Stone walls, walkways, patios, steps, and more. Built by Family. Built to Last.' } = Astro.props;
+const {
+  title,
+  description = 'M & J Masonry — Family-owned masonry and hardscape company in Rockland, MA. Stone walls, walkways, patios, steps, and more. Built by Family. Built to Last.',
+  ogImage = '/img/gallery/patio-paver-fountain.jpg',
+  preloadImage,
+} = Astro.props;
+
+const fullTitle = `${title} | M & J Masonry`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(link(ogImage), Astro.site);
+
+// Schema.org LocalBusiness — service-area business (no public street address)
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: 'M & J Masonry',
+  description:
+    'Family-owned masonry and hardscape company serving Rockland, MA and the South Shore. Stone walls, walkways, patios, steps, paver installation, fireplaces, and masonry repairs.',
+  url: Astro.site?.toString(),
+  telephone: phoneE164,
+  email,
+  image: ogImageURL.toString(),
+  logo: new URL(link('/img/logo-mj.png'), Astro.site).toString(),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Rockland',
+    addressRegion: 'MA',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    name: 'South Shore, Massachusetts',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 42.1307,
+      longitude: -70.9161,
+    },
+    geoRadius: '40000',
+  },
+  priceRange: '$$',
+};
 ---
 
 <!doctype html>
@@ -18,9 +63,24 @@ const { title, description = 'M & J Masonry — Family-owned masonry and hardsca
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" sizes="32x32" href={link('/favicon-32x32.png')} />
     <link rel="icon" type="image/png" sizes="192x192" href={link('/favicon-192x192.png')} />
     <link rel="apple-touch-icon" sizes="180x180" href={link('/apple-touch-icon.png')} />
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="M & J Masonry" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    {preloadImage && <link rel="preload" as="image" type="image/webp" href={link(preloadImage)} />}
 
     <!-- Google Fonts: Inter + Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,7 +90,8 @@ const { title, description = 'M & J Masonry — Family-owned masonry and hardsca
       rel="stylesheet"
     />
 
-    <title>{title} | M &amp; J Masonry</title>
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   </head>
   <body class="bg-cream text-navy font-sans text-base antialiased">
     <Header />

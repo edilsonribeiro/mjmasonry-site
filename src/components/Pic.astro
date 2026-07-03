@@ -1,0 +1,28 @@
+---
+// Renders a <picture> that serves WebP with the original image as fallback.
+// Expects a .webp file to exist alongside the original (same name, same folder).
+import { link } from '../lib/url';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const { src, alt, class: className, loading = 'lazy', fetchpriority } = Astro.props;
+const webpSrc = src.replace(/\.(jpe?g|png)$/i, '.webp');
+---
+
+<picture>
+  {webpSrc !== src && <source type="image/webp" srcset={link(webpSrc)} />}
+  <img
+    src={link(src)}
+    alt={alt}
+    class={className}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+  />
+</picture>
