@@ -22,6 +22,20 @@ const {
 } = Astro.props;
 
 const fullTitle = `${title} | M & J Masonry`;
+
+// Self-hosted fonts (latin subset, downloaded from Google Fonts) — avoids the
+// render-blocking fonts.googleapis.com stylesheet. Inter is a variable font
+// covering all weights we use; Poppins ships one file per weight.
+const LATIN_RANGE =
+  'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
+const fontFace = (family: string, weight: string, file: string) =>
+  `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};font-display:swap;src:url(${link(`/fonts/${file}`)}) format('woff2');unicode-range:${LATIN_RANGE};}`;
+const fontCss = [
+  fontFace('Inter', '400 700', 'inter-var.woff2'),
+  fontFace('Poppins', '600', 'poppins-600.woff2'),
+  fontFace('Poppins', '700', 'poppins-700.woff2'),
+  fontFace('Poppins', '800', 'poppins-800.woff2'),
+].join('');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(link(ogImage), Astro.site);
 
@@ -82,13 +96,10 @@ const localBusinessSchema = {
 
     {preloadImage && <link rel="preload" as="image" type="image/webp" href={link(preloadImage)} />}
 
-    <!-- Google Fonts: Inter + Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts: Inter + Poppins, self-hosted (no render-blocking third-party CSS) -->
+    <link rel="preload" as="font" type="font/woff2" href={link('/fonts/inter-var.woff2')} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={link('/fonts/poppins-700.woff2')} crossorigin />
+    <style set:html={fontCss} />
 
     <title>{fullTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />

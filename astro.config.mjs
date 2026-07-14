@@ -11,6 +11,10 @@ const base = process.env.BASE_PATH ?? '/mjmasonry-site';
 export default defineConfig({
   site,
   base,
+  build: {
+    // The site-wide stylesheet is small; inlining it removes a render-blocking request.
+    inlineStylesheets: 'always',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
