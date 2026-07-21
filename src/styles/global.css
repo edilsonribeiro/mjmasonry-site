@@ -6,6 +6,7 @@
   --color-navy-light: #2A3F6A;
   --color-gold: #C9A84C;
   --color-gold-bright: #D4A843;
+  --color-gold-dark: #856A1D; /* WCAG AA on cream (#F8F6F0): 4.76:1 — use for gold text on light backgrounds */
   --color-cream: #F8F6F0;
 
   --font-sans: 'Inter', system-ui, sans-serif;
