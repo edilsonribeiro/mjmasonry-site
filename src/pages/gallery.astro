@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Pic from '../components/Pic.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { callLink, phoneDisplay } from '../data/contact';
 import { link } from '../lib/url';
+import { lightboxAttrs } from '../lib/img';
 import { galleryCategories } from '../data/gallery';
 ---
 
@@ -21,6 +23,7 @@ import { galleryCategories } from '../data/gallery';
         See the quality and craftsmanship behind every M &amp; J Masonry project. From walkways
         to walls, each photo tells the story of hard work and attention to detail.
       </p>
+      <p class="text-gray-400 text-sm mt-4">Click any photo to view it full size.</p>
     </div>
   </section>
 
@@ -52,21 +55,26 @@ import { galleryCategories } from '../data/gallery';
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cat.images.map((img) => (
-              <div class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 bg-white">
+              <button
+                type="button"
+                aria-label={`View larger: ${img.alt}`}
+                {...lightboxAttrs(img, `${cat.title} — ${img.alt}`)}
+                class="group relative block w-full cursor-zoom-in rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 bg-white"
+              >
                 <Pic
                   src={img.src}
                   alt={img.alt}
                   class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div class="absolute bottom-0 left-0 right-0 p-6">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/20 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-0 left-0 right-0 p-6 text-left">
                     <span class="inline-block bg-gold text-navy-dark text-xs font-bold px-3 py-1 rounded-full mb-2">
                       {cat.title}
                     </span>
                     <p class="text-white font-medium leading-snug">{img.alt}</p>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -105,4 +113,6 @@ import { galleryCategories } from '../data/gallery';
       </div>
     </div>
   </section>
+
+  <Lightbox />
 </Layout>

@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Pic from '../components/Pic.astro';
 import ServiceIcon from '../components/ServiceIcon.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Testimonials from '../components/Testimonials.astro';
 import { callLink, phoneDisplay } from '../data/contact';
 import { link } from '../lib/url';
+import { lightboxAttrs } from '../lib/img';
 import { services } from '../data/services';
 
 const heroImage = '/img/gallery/walkway-paver-curved.webp';
@@ -146,13 +149,18 @@ const galleryImages = [
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {galleryImages.map((img) => (
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+          <button
+            type="button"
+            aria-label={`View larger: ${img.alt}`}
+            {...lightboxAttrs(img)}
+            class="group block w-full cursor-zoom-in rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
             <Pic
               src={img.src}
               alt={img.alt}
-              class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              class="w-full h-64 object-cover group-hover:scale-105 group-focus:scale-105 transition-transform duration-500"
             />
-          </div>
+          </button>
         ))}
       </div>
 
@@ -166,6 +174,9 @@ const galleryImages = [
       </div>
     </div>
   </section>
+
+  <!-- ============ TESTIMONIALS (hidden until data exists) ============ -->
+  <Testimonials />
 
   <!-- ============ ABOUT TEASER ============ -->
   <section class="py-20 bg-cream">
@@ -231,4 +242,6 @@ const galleryImages = [
       </div>
     </div>
   </section>
+
+  <Lightbox />
 </Layout>
