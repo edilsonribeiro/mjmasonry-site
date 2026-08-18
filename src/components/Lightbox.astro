@@ -1,0 +1,183 @@
+---
+// Fullscreen photo viewer. Drop <Lightbox /> once per page; every element
+// carrying the attributes from lightboxAttrs() becomes a trigger, and the
+// viewer pages through all of them in DOM order.
+//
+// Built on the native <dialog> so focus trapping, Esc-to-close, focus restore
+// and the top layer come from the browser instead of a JS library.
+---
+
+<dialog
+  data-lb
+  aria-label="Project photo viewer"
+  class="m-0 h-full max-h-none w-full max-w-none bg-transparent p-0 text-white backdrop:bg-navy-dark/95 open:flex"
+>
+  <div data-lb-shell class="flex h-full w-full flex-col">
+    <div class="flex shrink-0 items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <span data-lb-counter class="text-sm tabular-nums text-white/70"></span>
+      <button
+        type="button"
+        data-lb-close
+        aria-label="Close photo viewer"
+        class="rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <div data-lb-stage class="relative flex min-h-0 flex-1 items-center justify-center px-2 py-2 sm:px-16">
+      <button
+        type="button"
+        data-lb-prev
+        aria-label="Previous photo"
+        class="absolute left-1 z-10 rounded-full bg-navy-dark/60 p-2 text-white/80 transition-colors hover:bg-gold hover:text-navy-dark sm:left-3 sm:p-3"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      {/* display:contents so the <img> is the flex item and max-h-full resolves
+          against the stage — nesting it inside a sized <picture> makes the
+          percentage circular and the photo overflows the viewport. */}
+      <picture class="contents">
+        <source data-lb-source type="image/webp" />
+        <img data-lb-img src="" alt="" class="max-h-full max-w-full rounded-lg object-contain shadow-2xl" />
+      </picture>
+
+      <button
+        type="button"
+        data-lb-next
+        aria-label="Next photo"
+        class="absolute right-1 z-10 rounded-full bg-navy-dark/60 p-2 text-white/80 transition-colors hover:bg-gold hover:text-navy-dark sm:right-3 sm:p-3"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <p
+      data-lb-text
+      aria-live="polite"
+      class="shrink-0 px-6 py-4 text-center text-sm text-white/85 sm:text-base"
+    >
+    </p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector('dialog[data-lb]');
+  const triggers = Array.from(document.querySelectorAll('[data-lightbox]'));
+
+  if (dialog && triggers.length) {
+    const items = triggers.map((el) => ({
+      src: el.dataset.lbSrc,
+      webp: el.dataset.lbWebp,
+      alt: el.dataset.lbAlt || '',
+      caption: el.dataset.lbCaption || '',
+    }));
+
+    const img = dialog.querySelector('[data-lb-img]');
+    const source = dialog.querySelector('[data-lb-source]');
+    // Note: triggers also carry data-lb-caption, hence the distinct name here.
+    const caption = dialog.querySelector('[data-lb-text]');
+    const counter = dialog.querySelector('[data-lb-counter]');
+    const prevBtn = dialog.querySelector('[data-lb-prev]');
+    const nextBtn = dialog.querySelector('[data-lb-next]');
+    const single = items.length < 2;
+
+    prevBtn.hidden = single;
+    nextBtn.hidden = single;
+
+    let index = 0;
+
+    // Warm the neighbours so arrowing through the gallery feels instant.
+    const preload = (i) => {
+      const item = items[(i + items.length) % items.length];
+      if (item) new Image().src = item.webp || item.src;
+    };
+
+    const show = (i) => {
+      index = (i + items.length) % items.length;
+      const item = items[index];
+      source.srcset = item.webp || '';
+      img.src = item.src;
+      img.alt = item.alt;
+      caption.textContent = item.caption;
+      counter.textContent = single ? '' : `${index + 1} / ${items.length}`;
+      if (!single) {
+        preload(index + 1);
+        preload(index - 1);
+      }
+    };
+
+    // <dialog> restores focus on its own, but only when the opener was focused
+    // — a mouse click doesn't focus a button in every browser, so track it.
+    let opener = null;
+
+    const open = (i, trigger) => {
+      opener = trigger;
+      show(i);
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => dialog.close();
+
+    triggers.forEach((el, i) => el.addEventListener('click', () => open(i, el)));
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      if (opener && opener.isConnected) opener.focus();
+      opener = null;
+    });
+
+    dialog.querySelector('[data-lb-close]').addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(index - 1));
+    nextBtn.addEventListener('click', () => show(index + 1));
+
+    // Clicking anywhere but the photo or a control closes the viewer.
+    dialog.addEventListener('click', (e) => {
+      if (!e.target.closest('button, picture')) close();
+    });
+
+    dialog.addEventListener('keydown', (e) => {
+      if (single) return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        show(index - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        show(index + 1);
+      }
+    });
+
+    // Horizontal swipe on touch devices.
+    let touchX = null;
+    let touchY = null;
+    dialog.addEventListener(
+      'touchstart',
+      (e) => {
+        touchX = e.changedTouches[0].clientX;
+        touchY = e.changedTouches[0].clientY;
+      },
+      { passive: true },
+    );
+    dialog.addEventListener(
+      'touchend',
+      (e) => {
+        if (touchX === null || single) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(index + (dx < 0 ? 1 : -1));
+        touchX = null;
+        touchY = null;
+      },
+      { passive: true },
+    );
+  } else if (dialog) {
+    dialog.remove();
+  }
+</script>
