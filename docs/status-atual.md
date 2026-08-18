@@ -1,8 +1,8 @@
 ---
 type: Project
-description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos) | Entrega 2 ainda travada na verificação do GBP, que depende do cliente"
+description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos), revisão geral final concluída em 17/08 | Entrega 2 ainda travada na verificação do GBP, que depende do cliente"
 tags: [institucional-company, status]
-updated: 2026-08-06
+updated: 2026-08-17
 ---
 
 # Status — institucional-company
@@ -41,8 +41,8 @@ updated: 2026-08-06
 - [x] **Corrigir email no código do site** ✅ (2026-07-02) — `src/data/contact.ts` corrigido pra `mj_candidos@outlook.com` (commit `de78cb5`), deploy verificado em produção
 - [x] **Teste end-to-end** ✅ **VALIDADO** (2026-07-02) — lead de teste enviado via form em produção (CAPTCHA ok, Inbox do Formspree, notificação disparada) e **cliente confirmou recebimento no Outlook**. Circuito de leads 100% funcional: site → Formspree → `mj_candidos@outlook.com`
 - Nota: única submission em spam (11/06) era solicitação de SEO — spam real, nenhum lead perdido. Formshield funcionando
-- [ ] **Tagline** — cliente não escolheu; está rodando com o default "Built by Family. Built to Last."
-- [ ] **Teste mobile real** — iPhone + Android (não emulator)
+- [x] **Tagline** ✅ (confirmada 2026-08-17) — cliente escolheu "Built by Family. Built to Last." (opção 1), já era o default, nada mudou no código
+- [x] **Teste mobile real** ✅ (2026-08-05) — iPhone + Android físicos, funcionou
 
 ### ✅ Concluído em 2026-07-02 (dia 1 do sprint — commit `c1d6c3f`, verificado em produção)
 
@@ -83,10 +83,9 @@ updated: 2026-08-06
 
 ### 🔜 Próximos passos (aguardando o cliente)
 
-1. Cliente responde: **data de nascimento** (atualizar na conta Google) + **tagline** (aplicar no site) + **grava o vídeo de verificação** (passo a passo na Mensagem 2)
+1. Cliente **grava o vídeo de verificação** do GBP (passo a passo já enviado na Mensagem 2, e de novo no follow-up de 2026-08-17) — data de nascimento e tagline já foram recebidos
 2. Verificação aprovada → **fotos** (upload manual das 8 da galeria + logo) + **horário** no perfil
 3. Confirmar perfil no ar (`site:` e buscas "masonry Rockland MA") → **enviar Mensagem 3 com prints** → ENTREGA
-4. Paralelo: teste mobile real (iPhone + Android físicos)
 
 **Detalhes de infra pra lembrar:** a máquina Mint **tem** Node v24 + npm 11 (a nota antiga de que não tinha estava errada) — dá pra rodar `npm run build`, `astro preview` e Lighthouse local. Sitemap é manual: se criar página nova, atualizar `public/sitemap.xml` na mão. Se o deploy do Pages falhar com "deployment_failed" transiente, re-disparar com `gh workflow run "Deploy to GitHub Pages"`.
 
@@ -107,7 +106,16 @@ Plano detalhado: [[sprint-entrega-3]]. Feita fora de ordem porque a Entrega 2 es
 
 **Teste em aparelho físico:** ✅ feito em 2026-08-05, funcionou — fecha um item que arrastava desde a Entrega 1.
 
-**Falta:** depoimentos reais do cliente (a seção está no ar, invisível, esperando o conteúdo) e a revisão geral final.
+**Falta:** depoimentos reais do cliente (a seção está no ar, invisível, esperando o conteúdo).
+
+### ✅ Concluído em 2026-08-17
+
+- **Revisão geral final** — checkout local sincronizado com `origin/master` (estava 2 commits atrás, faltava todo o código do Lightbox/Testimonials); build de produção limpo, conteúdo das 5 páginas revisado (sem typo/placeholder), meta/JSON-LD conferidos
+- **`sitemap.xml` corrigido** — `lastmod` de Home e Gallery estava parado em 02/07; atualizado pra 06/08 (data real do deploy da Entrega 3), commit `96bbfcc`
+- **Tagline confirmada com o cliente** — "Built by Family. Built to Last." (opção 1), já é a que está no código, nada a mudar
+- **Data de nascimento também já recebida** do cliente (uso interno, conta Google)
+- **Mais um contato feito com o cliente** — follow-up cobrando o vídeo de verificação do GBP (sem resposta desde a Mensagem 2, 2026-07-20) e pedindo os 2-3 depoimentos da Entrega 3
+- Observação levantada, não corrigida (decisão do dono do projeto): a Home mostra selo "5★ Customer Rated" sem nenhum review público existir ainda — vale reconsiderar quando os depoimentos reais entrarem
 
 ---
 
