@@ -12,6 +12,8 @@ version: v2
 > Proposta de desenvolvimento + manutenção em 6 pagamentos mensais.
 > Versão anterior: [[escopo-3-entregas]] (pagamento por entrega)
 > Protótipo aprovado: **Opção 2 (Astro)** → http://mjmasonry-astro.surge.sh
+>
+> ⚠️ **Esta página é a proposta original — os valores efetivamente pagos divergem a partir do mês 4.** Ver [[status-atual]] para o cronograma real de pagamentos e o recálculo dos meses 5–6 ($100 cada, em vez de $133/$133).
 
 ---
 

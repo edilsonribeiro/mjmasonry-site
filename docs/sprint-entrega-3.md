@@ -8,7 +8,7 @@ sprint: entrega-3
 
 # Sprint Entrega 3 — Galeria + Depoimentos
 
-> **Status:** ✅ **no ar em 2026-08-06** (PR #1, `master` em `afe8ebf`) | **Pagamento:** Mês 3 ($200) **não cobrado** | **Antecipada:** feita em 05/08 com a Entrega 2 ainda aberta do lado do cliente
+> **Status:** ✅ **no ar em 2026-08-06** (PR #1, `master` em `afe8ebf`) | **Pagamento:** Mês 3 ($200) **pago em 2026-07-29** — cobrado antes do previsto, ver nota abaixo | **Antecipada:** feita em 05/08 com a Entrega 2 ainda aberta do lado do cliente
 
 ---
 
@@ -16,7 +16,7 @@ sprint: entrega-3
 
 A Entrega 2 está tecnicamente pronta desde 20/07 e travada num único item que depende só do cliente: gravar o vídeo de verificação do Google Business Profile. Duas semanas sem resposta. Em vez de ficar parado, o trabalho técnico da Entrega 3 foi adiantado — ele não depende da verificação do GBP.
 
-**Cuidado comercial:** a Entrega 3 foi *construída*, não *entregue*. Não anunciar ao cliente nem cobrar o Mês 3 antes de fechar a Entrega 2, senão a régua de "1 entrega por mês pago" se perde.
+**Cuidado comercial:** a Entrega 3 foi *construída*, mas ainda não *entregue formalmente* (sem Mensagem 3/anúncio ao cliente). A regra original era não cobrar o Mês 3 antes de fechar a Entrega 2, pra manter a régua de "1 entrega por mês pago" — mas o Mês 3 **acabou sendo pago em 2026-07-29** mesmo com a Entrega 2 ainda travada. Ver [[status-atual]] para o cronograma real de pagamentos.
 
 ---
 

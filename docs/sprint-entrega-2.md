@@ -9,7 +9,7 @@ sprint: entrega-2
 
 # Sprint Entrega 2 — SEO + Google Business
 
-> **Deadline:** 2026-07-31 (meta técnica: 2026-07-16) | **Pagamento:** $200 recebido (Mês 2 V2, confirmado 2026-07-02) | **Status macro:** [[status-atual]]
+> **Deadline:** 2026-07-31 (meta técnica: 2026-07-16) | **Pagamento:** $200 recebido (Mês 2 V2, pago 2026-06-17 — data corrigida em [[status-atual]], trabalho técnico deste sprint segue registrado a partir de 2026-07-02) | **Status macro:** [[status-atual]]
 
 ---
 
@@ -105,7 +105,7 @@ Google verifica o negócio (1h–14 dias) Search Console + indexação
 - [ ] Acompanhar verificação do GBP (repetir se o Google pedir vídeo/código)
 - [ ] Confirmar site aparecendo no Google (`site:mjmasonryma.com`)
 - [ ] **ENTREGA OFICIAL** — apresentar pro cliente: perfil no Maps + resultados de busca + relatório PageSpeed
-- [ ] Confirmar pagamento Mês 3 (Entrega 3 — Galeria + Depoimentos) e pedir os 2–3 depoimentos
+- [x] Confirmar pagamento Mês 3 (Entrega 3 — Galeria + Depoimentos) ✅ pago 2026-07-29 — falta ainda pedir os 2–3 depoimentos
 
 ---
 
