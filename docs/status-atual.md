@@ -27,9 +27,10 @@ updated: 2026-08-22
 | 2 | Mês 2 | Entrega 2 — SEO + Google Business | $200 | ⚠️ Travada no cliente — **pago (confirmado 2026-06-17)**, técnico 100% pronto, falta só a verificação do GBP |
 | 3 | Mês 3 | Entrega 3 — Galeria + Testimonials | $200 | ✅ **Pago em 2026-07-29** — no ar desde 06/08, ainda não anunciada oficialmente ao cliente; falta só os depoimentos do cliente — ver [[sprint-entrega-3]]. ⚠️ Cobrado antes do previsto (regra original era não cobrar antes de fechar a Entrega 2 — ver nota abaixo) |
 | 4 | Mês 4 | Manutenção — mês 1 | $200 (proposta previa $134) | ✅ Pago em **2026-08-22** |
-| 5–6 | Mês 5–6 | Manutenção — meses 2 e 3 | proposta previa $133+$133 | 🔒 Pendente — **ver nota de valores abaixo** |
+| 5 | Mês 5 | Manutenção — mês 2 | **$100 (recalculado)** | 🔒 Pendente |
+| 6 | Mês 6 | Manutenção — mês 3 | **$100 (recalculado)** | 🔒 Pendente |
 
-> ⚠️ **Nota sobre valores:** recebido até agora = **$800** (4× $200 em 2026-05-13, 2026-06-17, 2026-07-29, 2026-08-22). A proposta original ([[proposta-cliente-v2]]) previa $200/$200/$200 nos meses 1–3 e depois $134/$133/$133 na manutenção (total $1.000). O 4º pagamento veio em $200 fixo, não $134 — se o contrato continuar em $1.000 fixos, sobrariam só $200 pros meses 5–6 juntos (não $266 como a proposta original previa). **Não resolvido ainda — decidir com o cliente/definir internamente** como tratar essa diferença de $66.
+> ⚠️ **Nota sobre valores:** recebido até agora = **$800** (4× $200 em 2026-05-13, 2026-06-17, 2026-07-29, 2026-08-22). A proposta original ([[proposta-cliente-v2]]) previa $200/$200/$200 nos meses 1–3 e depois $134/$133/$133 na manutenção (total $1.000). O 4º pagamento veio em $200 fixo, não $134 — **$66 a mais que o previsto**. Recalculando pra manter o contrato fechado em $1.000: restam $1.000 − $800 = **$200** pros meses 5 e 6, divididos igualmente em **$100 cada** (em vez de $133/$133). Se o total de $1.000 não for pra ficar fixo — por exemplo, se o cliente pagou $200 no mês 4 como valor novo combinado, não por engano — os meses 5–6 voltam a ser $133 cada e o contrato passa a somar $1.066. **Confirmar qual dos dois cenários é o real antes de cobrar os meses 5 e 6.**
 
 ---
 
