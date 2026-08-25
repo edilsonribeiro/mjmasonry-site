@@ -51,8 +51,8 @@ status: active
 2. "Do you want to add a location customers can visit?" → **No** (isso torna service area business)
 3. Área de atendimento → cidades da lista acima
 4. Contato → telefone + site
-5. Verificação → provavelmente **vídeo** (mostrar caminhão/ferramentas/obra) — agendar com o cliente
-6. Pós-verificação: descrição, horário, serviços, fotos, ativar mensagens e Q&A
+5. ~~Verificação → provavelmente **vídeo** (mostrar caminhão/ferramentas/obra) — agendar com o cliente~~ — **feito por SMS em 2026-08-25** (código enviado pro (857) 251-7967, cliente confirmou). Google processando, até 5 dias.
+6. Pós-verificação: descrição, horário, serviços, fotos, ativar mensagens e Q&A — **falta**: 8 fotos da galeria + logo + horário (1 vídeo do adesivo da caminhonete já subiu, status "Pendente")
 7. Adicionar `mjmasonryma@gmail.com` como proprietário e manter o dev como gerente (Users → invite)
 
 ## Fontes

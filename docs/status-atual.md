@@ -1,8 +1,8 @@
 ---
 type: Project
-description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos), revisão geral final concluída em 17/08 | Entrega 2 ainda travada na verificação do GBP, que depende do cliente | $800 recebidos até 22/08 (meses 1-4)"
+description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos), revisão geral final concluída em 17/08 | Entrega 2: GBP verificado por SMS em 25/08, Google processando (até 5 dias) | $800 recebidos até 22/08 (meses 1-4)"
 tags: [institucional-company, status]
-updated: 2026-08-22
+updated: 2026-08-25
 ---
 
 # Status — institucional-company
@@ -85,10 +85,17 @@ updated: 2026-08-22
 - **Formspree checado**: nenhum lead real ainda (2 testes + 3 spams filtrados); notificações vão pro outlook do cliente
 - **Mensagem 3 (entrega oficial) redigida** — enviar quando a verificação aprovar, com prints
 
-### 🔜 Próximos passos (aguardando o cliente)
+### ✅ Concluído em 2026-08-24/25
 
-1. Cliente **grava o vídeo de verificação** do GBP (passo a passo já enviado na Mensagem 2, e de novo no follow-up de 2026-08-17) — data de nascimento e tagline já foram recebidos
-2. Verificação aprovada → **fotos** (upload manual das 8 da galeria + logo) + **horário** no perfil
+- **Cliente mandou 2 vídeos pelo WhatsApp** — não eram o vídeo de verificação pedido (arredores + nome + equipamento), e sim clipes soltos: um de uma rua qualquer (sem uso), outro do adesivo da caminhonete "M&J Candido's" com telefone. Cliente não tinha entendido o pedido.
+- **1 dos 2 vídeos (adesivo da caminhonete) subido como mídia do perfil GBP** — status "Pendente" (moderação automática do Google).
+- **Verificação do GBP concluída por SMS**, não por vídeo — mais simples e o cliente topou na hora. Endereço de correspondência confirmado com o cliente (240 Concord St #3, Rockland, MA 02370 — bate com o que já estava anotado, fonte Namecheap) e submetido como endereço privado (service area business, não publicado). Código de 6 dígitos enviado pro (857) 251-7967, aceito pelo cliente. Google agora está "processando a verificação" — **prazo informado: até 5 dias**.
+- Perfil ainda **não aparece publicamente** (testado: busca direta pelo nome, pelo telefone e no Google Maps — nada ainda). Normal enquanto a verificação está em análise.
+
+### 🔜 Próximos passos (aguardando o Google, depois o cliente)
+
+1. **Aguardar aprovação da verificação** (até 5 dias a partir de 2026-08-25) — checar `site:mjmasonryma.com` e busca "masonry Rockland MA" / "M & J Masonry" pra confirmar quando o perfil ficar público
+2. Verificação aprovada → **fotos** (upload manual das 8 da galeria + logo) + **horário de funcionamento** no perfil (o vídeo do adesivo já subiu, mas ainda falta o essencial)
 3. Confirmar perfil no ar (`site:` e buscas "masonry Rockland MA") → **enviar Mensagem 3 com prints** → ENTREGA
 
 **Detalhes de infra pra lembrar:** a máquina Mint **tem** Node v24 + npm 11 (a nota antiga de que não tinha estava errada) — dá pra rodar `npm run build`, `astro preview` e Lighthouse local. Sitemap é manual: se criar página nova, atualizar `public/sitemap.xml` na mão. Se o deploy do Pages falhar com "deployment_failed" transiente, re-disparar com `gh workflow run "Deploy to GitHub Pages"`.
