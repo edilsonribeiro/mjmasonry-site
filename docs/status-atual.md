@@ -1,8 +1,8 @@
 ---
 type: Project
-description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos), revisão geral final concluída em 17/08 | Entrega 2: GBP verificado por SMS em 25/08, Google processando (até 5 dias) | $800 recebidos até 22/08 (meses 1-4)"
+description: "Fase: Entrega 3 no ar desde 06/08 (lightbox + depoimentos), revisão geral final concluída em 17/08 | Entrega 2: verificação SMS falhou (checado 12/09), tentando por vídeo agora | $800 recebidos até 22/08 (meses 1-4)"
 tags: [institucional-company, status]
-updated: 2026-08-25
+updated: 2026-09-12
 ---
 
 # Status — institucional-company
@@ -92,11 +92,36 @@ updated: 2026-08-25
 - **Verificação do GBP concluída por SMS**, não por vídeo — mais simples e o cliente topou na hora. Endereço de correspondência confirmado com o cliente (240 Concord St #3, Rockland, MA 02370 — bate com o que já estava anotado, fonte Namecheap) e submetido como endereço privado (service area business, não publicado). Código de 6 dígitos enviado pro (857) 251-7967, aceito pelo cliente. Google agora está "processando a verificação" — **prazo informado: até 5 dias**.
 - Perfil ainda **não aparece publicamente** (testado: busca direta pelo nome, pelo telefone e no Google Maps — nada ainda). Normal enquanto a verificação está em análise.
 
-### 🔜 Próximos passos (aguardando o Google, depois o cliente)
+### ⚠️ Checado em 2026-09-12 — verificação por SMS NÃO foi aprovada
 
-1. **Aguardar aprovação da verificação** (até 5 dias a partir de 2026-08-25) — checar `site:mjmasonryma.com` e busca "masonry Rockland MA" / "M & J Masonry" pra confirmar quando o perfil ficar público
-2. Verificação aprovada → **fotos** (upload manual das 8 da galeria + logo) + **horário de funcionamento** no perfil (o vídeo do adesivo já subiu, mas ainda falta o essencial)
-3. Confirmar perfil no ar (`site:` e buscas "masonry Rockland MA") → **enviar Mensagem 3 com prints** → ENTREGA
+23 dias depois (bem além do prazo de "até 5 dias" informado em 25/08), o painel resetou pro
+estado inicial: voltou a pedir "Faça a verificação" do zero, sem nenhuma explicação do motivo
+da rejeição (comportamento comum do Google — falha silenciosa). Confirmado também por busca
+direta ("M & J Masonry Rockland MA") e no Google Maps: **perfil não aparece em lugar nenhum**,
+só concorrentes. O vídeo do adesivo continua "Pendente" (dependia da verificação aprovar).
+
+**Decisão:** tentar o método de vídeo agora (o planejado originalmente), já que SMS já foi tentado
+e falhou uma vez sem explicação. Refeito o cadastro do endereço de correspondência (mesmo endereço)
+e cheguei na tela de instruções do vídeo — dessa vez **só a opção de vídeo apareceu** (SMS sumiu da
+lista de métodos, possivelmente "queimado" pela tentativa anterior).
+
+**Requisitos exatos do vídeo** (Google exige tudo em UMA gravação contínua, sem cortes):
+1. Mostrar a área ao redor — placas da rua ou empresas vizinhas (precisa bater com a área de
+   cobertura informada no cadastro)
+2. Mostrar o nome da empresa impresso no cartão de visita, na licença ou no veículo — precisa
+   ser **exatamente** "M & J Masonry" (o nome cadastrado)
+3. Mostrar equipamentos comerciais, sistema de agendamento, ou abrir um veículo com a marca —
+   confirma autorização pra representar a empresa
+
+Não enviei nada — saí da tela sem submeter, esperando o cliente gravar.
+
+### 🔜 Próximos passos (aguardando o cliente, depois o Google)
+
+1. **Cliente grava o vídeo** seguindo os 3 requisitos acima, em uma gravação contínua — repassar via mensagem
+2. Fazer login em business.google.com (`mj_candidos@outlook.com`) → Fazer verificação → reinformar o
+   endereço de correspondência (240 Concord St #3, Rockland, MA 02370) → enviar o vídeo
+3. Verificação aprovada → **fotos** (upload manual das 8 da galeria + logo) + **horário de funcionamento** no perfil
+4. Confirmar perfil no ar (`site:` e buscas "masonry Rockland MA") → **enviar Mensagem 3 com prints** → ENTREGA
 
 **Detalhes de infra pra lembrar:** a máquina Mint **tem** Node v24 + npm 11 (a nota antiga de que não tinha estava errada) — dá pra rodar `npm run build`, `astro preview` e Lighthouse local. Sitemap é manual: se criar página nova, atualizar `public/sitemap.xml` na mão. Se o deploy do Pages falhar com "deployment_failed" transiente, re-disparar com `gh workflow run "Deploy to GitHub Pages"`.
 

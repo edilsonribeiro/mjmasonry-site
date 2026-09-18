@@ -51,7 +51,12 @@ status: active
 2. "Do you want to add a location customers can visit?" → **No** (isso torna service area business)
 3. Área de atendimento → cidades da lista acima
 4. Contato → telefone + site
-5. ~~Verificação → provavelmente **vídeo** (mostrar caminhão/ferramentas/obra) — agendar com o cliente~~ — **feito por SMS em 2026-08-25** (código enviado pro (857) 251-7967, cliente confirmou). Google processando, até 5 dias.
+5. ~~Verificação → provavelmente **vídeo**~~ ~~feito por SMS em 2026-08-25~~ — **SMS não foi aprovado**
+   (checado 2026-09-12, 23 dias depois: painel resetou, pedindo verificação do zero, sem explicação).
+   Indo pro **vídeo** agora (única opção que apareceu na 2ª tentativa). Requisitos exatos, tudo numa
+   gravação contínua: (1) área ao redor — placas da rua/empresas vizinhas batendo com a área de
+   cobertura cadastrada; (2) nome da empresa impresso em cartão/licença/veículo, exatamente
+   "M & J Masonry"; (3) equipamentos comerciais, sistema de agendamento ou veículo com a marca.
 6. Pós-verificação: descrição, horário, serviços, fotos, ativar mensagens e Q&A — **falta**: 8 fotos da galeria + logo + horário (1 vídeo do adesivo da caminhonete já subiu, status "Pendente")
 7. Adicionar `mjmasonryma@gmail.com` como proprietário e manter o dev como gerente (Users → invite)
 
